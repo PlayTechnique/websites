@@ -3,4 +3,4 @@
 **/output/**
 *.egg-info/
 venv
-idea/
+**/.idea/**
