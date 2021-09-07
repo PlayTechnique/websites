@@ -9,6 +9,10 @@ show_help="false"
 start="false"
 stop="false"
 
+if [[ ${#@} -lt 1 ]]; then
+  show_help="true"
+fi
+
 for arg in $@
 do
   case $arg in
