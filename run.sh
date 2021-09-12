@@ -29,13 +29,13 @@ if [[ "${show_help}" == "true" ]]; then
 fi
 
 if [[ ${start} == "true" ]]; then
-  docker run -p ${HTTPD_HOST_PORT}:${HTTPD_CONTAINER_PORT} -d --name ${CONTAINER_SHORT_NAME} ${IMAGE_TAG}:${IMAGE_VERSION}
+  docker container run --rm -p ${HTTPD_HOST_PORT}:${HTTPD_CONTAINER_PORT} -d --name ${CONTAINER_SHORT_NAME} ${IMAGE_TAG}:${IMAGE_VERSION}
+
   echo "http://localhost:${HTTPD_HOST_PORT}"
-  exit $?
+  exit
 fi
 
 if [[ ${stop} == "true" ]]; then
-  docker container stop ${CONTAINER_SHORT_NAME}
-  docker rm ${CONTAINER_SHORT_NAME}
+  docker stop ${IMAGE_TAG}:${IMAGE_VERSION}
   exit $?
 fi

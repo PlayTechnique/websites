@@ -36,4 +36,4 @@ cd "${THIS_SCRIPT_DIR}"
 mkdir "${PUBLIC_HTML_DIR}"
 cp -R "${BLOG_OUTPUT_DIR}/" "${PUBLIC_HTML_DIR}/"
 
-docker build --build-arg HTTPD_PORT=${HTTPD_CONTAINER_PORT} . -t ${IMAGE_TAG}:${IMAGE_VERSION}
+docker build --build-arg HTTPD_PORT=${HTTPD_CONTAINER_PORT} --build-arg IMAGE_TAG=${IMAGE_TAG} -t ${IMAGE_TAG}:${IMAGE_VERSION} .
