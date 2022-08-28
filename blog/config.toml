@@ -1,0 +1,28 @@
+baseURL = 'http://playtechnique.io/'
+languageCode = 'en-us'
+title = 'Playtechnique'
+theme = "papermod"
+logo = "playtechnique_logo.png"
+
+[[ menu.main ]]
+  name = "Front Page"
+  url = "/"
+
+[[ menu.main ]]
+  name = "Projects"
+  url = "/projects"
+
+[[ menu.main ]]
+  name = "Blog"
+  url = "/blog"
+  description = "all projects posts"
+
+[ params ]
+  rssFullContent = "true"
+# [[ params.socialicons ]]
+#   name = "github"
+#   url =  "https://github.com/playtechnique"
+
+# [[ params.socialicons ]]
+#   name = "RSS"
+#   url = "index.xml"
