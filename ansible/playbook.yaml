@@ -2,4 +2,4 @@
 - hosts: droplets
   remote_user: root
   roles:
-    - configure_debian_for_docker
+    - websites_container

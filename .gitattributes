@@ -1,0 +1,2 @@
+ansible/inventory.yaml filter=git-crypt diff=git-crypt
+ansible/ansible.cfg filter=git-crypt diff=git-crypt

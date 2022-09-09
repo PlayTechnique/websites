@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bloggo
+  labels:
+    app: bloggo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bloggo
+  template:
+    metadata:
+      labels:
+        app: bloggo
+    spec:
+      containers:
+        - name: bloggo
+          image: docker.io/playtechnique/bloggo_not_doggo:latest
+          ports:
+            - containerPort: 80

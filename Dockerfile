@@ -1,7 +1,11 @@
-FROM alpine:latest
-RUN apk add git
-COPY hugo_files/hugo /app/hugo
+FROM alpine:latest as build
+RUN mkdir bloggo_not_doggo
+COPY blog bloggo_not_doggo/blog
 
-RUN git clone https://github.com/gwynforthewyn/bloggo_not_doggo
-WORKDIR bloggo_not_doggo
-# RUN /app/hugo
+# get the hugo tooling into the container
+COPY hugo_tools/hugo bloggo_not_doggo/hugo
+WORKDIR bloggo_not_doggo/blog
+RUN ../hugo
+
+FROM nginx:latest
+COPY --from=build /bloggo_not_doggo/blog/public/* /usr/share/nginx/html/

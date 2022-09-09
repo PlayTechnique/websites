@@ -1,0 +1,8 @@
+- name: Re-create websites container
+  docker_container:
+    name: blog
+    image: docker.io/playtechnique/bloggo_not_doggo:latest
+    state: started
+    recreate: yes
+    exposed_ports:
+      - 80
