@@ -1,11 +1,9 @@
-FROM alpine:latest as build
-RUN mkdir bloggo_not_doggo
-COPY blog bloggo_not_doggo/blog
+FROM nginx:latest
+COPY blog blog
 
 # get the hugo tooling into the container
-COPY hugo_tools/hugo bloggo_not_doggo/hugo
-WORKDIR bloggo_not_doggo/blog
+COPY hugo_tools/hugo hugo
+WORKDIR blog
 RUN ../hugo
 
-FROM nginx:latest
-COPY --from=build /bloggo_not_doggo/blog/public/* /usr/share/nginx/html/
+RUN cp -r public/* /usr/share/nginx/html/
