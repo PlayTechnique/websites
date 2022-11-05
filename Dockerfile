@@ -1,9 +1,19 @@
-FROM nginx:latest
-COPY blog blog
+FROM alpine:latest
+
+ARG baseurl
+ENV BASEURL=$baseurl
+
+EXPOSE 80
+
+RUN apk add bash curl tcpdump libcap
+
+COPY --chown=nobody:nobody blog blog
 
 # get the hugo tooling into the container
-COPY hugo_tools/hugo hugo
-WORKDIR blog
-RUN ../hugo
+COPY --chown=nobody:nobody hugo_tools/hugo hugo
 
-RUN cp -r public/* /usr/share/nginx/html/
+RUN setcap cap_net_bind_service+ip hugo
+
+USER nobody
+WORKDIR blog
+ENTRYPOINT ../hugo  --appendPort "false" --port "80" --bind "0.0.0.0" --baseURL "${BASEURL}" server
