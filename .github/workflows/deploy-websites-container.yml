@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     # Runs after the build job completes
     needs: "build"
+    if: ${{ contains('playtechnique/websites', github.repository ) }}
     defaults:
       run:
         working-directory: ansible
@@ -25,7 +26,6 @@ jobs:
         echo $SSH_PRIVATE_KEY | ssh-add - > /dev/null
     - name: "run ansible"
       run: |
-        cd ansible
         ansible-playbook -i inventory.yaml -vv -l droplets playbook.yaml
 
 

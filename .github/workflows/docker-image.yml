@@ -9,6 +9,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    if: ${{ contains('playtechnique/websites', github.repository ) }}
 
     steps:
     - name: Log in to DockerHub
