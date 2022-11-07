@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     # Runs after the build job completes
     needs: "build"
+    defaults:
+      run:
+        working-directory: ansible
 
     steps:
     - name: "set up ansible"
