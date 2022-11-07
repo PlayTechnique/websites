@@ -1,0 +1,29 @@
+---
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Runs after the build job completes
+    needs: "build"
+
+    steps:
+    - name: "set up ansible"
+      pip:
+        name=ansible
+    - name: "add the ssh key to the ssh-agent"
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.DIGITAL_OCEAN_CI_SSH_KEY }}
+      run: |
+        echo $SSH_PRIVATE_KEY | ssh-add - > /dev/null
+    - name: "run ansible"
+      run: |
+        cd ansible
+        ansible-playbook -i inventory.yaml -vv -l droplets playbook.yaml
+
+
+
