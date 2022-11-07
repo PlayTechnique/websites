@@ -13,7 +13,7 @@ Currently, you either register the runners at the Enterprise, Organisation, or a
 github api; I don't see a mention anywhere that I can register runners to run entirely in an individual's namespace.
 
 I want to add a feature that allows me to register multiple repositories inside a user's namespace. I currently envision this as a list handed in to the runner register.
-The current registration for users requires writing this file (taken from (the docs)[https://github.com/actions-runner-controller/actions-runner-controller/blob/master/docs/detailed-docs.md#repository-runners]):
+The current registration for users requires writing this file (taken from [the docs](https://github.com/actions-runner-controller/actions-runner-controller/blob/master/docs/detailed-docs.md#repository-runners) ):
 
 ```yaml
 # runnerdeployment.yaml
