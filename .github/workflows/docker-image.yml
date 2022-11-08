@@ -7,29 +7,29 @@ on:
 
 jobs:
 
-  # build:
+   build:
 
-  #   runs-on: ubuntu-latest
-  #   if: ${{ contains('playtechnique/websites', github.repository ) }}
+     runs-on: ubuntu-latest
+     if: ${{ contains('playtechnique/websites', github.repository ) }}
 
-  #   steps:
+     steps:
 
-  #   - name: Checkout websites repository
-  #     uses: actions/checkout@v3
-  #     with: 
-  #       ref: main
-  #   - name: Log in to DockerHub
-  #     uses: docker/login-action@v2 
-  #     with:
-  #       username: ${{ secrets.DOCKER_HUB_USERNAME }}
-  #       password: ${{ secrets.DOCKER_HUB_PAT }}
-  #   - name: Build and Publish the Docker image
-  #     uses: docker/build-push-action@v3
-  #     with:
-  #       push: true
-  #       tags: playtechnique/bloggo_not_doggo:latest
-  #       build-args: |
-  #         baseurl=playtechnique.io
+     - name: Checkout websites repository
+       uses: actions/checkout@v3
+       with:
+         ref: main
+     - name: Log in to DockerHub
+       uses: docker/login-action@v2
+       with:
+         username: ${{ secrets.DOCKER_HUB_USERNAME }}
+         password: ${{ secrets.DOCKER_HUB_PAT }}
+     - name: Build and Publish the Docker image
+       uses: docker/build-push-action@v3
+       with:
+         push: true
+         tags: playtechnique/bloggo_not_doggo:latest
+         build-args: |
+           baseurl=playtechnique.io
 
   deploy:
     
@@ -54,9 +54,6 @@ jobs:
          echo ${{ secrets.GIT_CRYPT }} | base64 -d > git_crypt.key
          git-crypt unlock git_crypt.key
          cd -
-    - name: "where am I"
-      run: |
-        pwd && ls -l && echo "---" && ls -l .. && cd .. && find .
     - name: "set up ansible"
       run: |
         pip install ansible
