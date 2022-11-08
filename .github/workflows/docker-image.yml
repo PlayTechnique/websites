@@ -14,8 +14,10 @@ jobs:
 
     steps:
 
-    - name: Checkout
+    - name: Checkout websites repository
       uses: actions/checkout@v3
+      with: 
+        ref: main
     - name: Log in to DockerHub
       uses: docker/login-action@v2 
       with:
@@ -42,8 +44,6 @@ jobs:
     - name: Install git-crypt
       run: |
         apt-get install -y git-crypt
-    - name: Checkout
-      uses: actions/checkout@v3
     - name: "where am I"
       run: |
         pwd && ls -l && echo "---" && ls -l ..
