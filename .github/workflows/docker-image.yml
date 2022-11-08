@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
+  workflow:
 
 jobs:
 
@@ -32,9 +32,9 @@ jobs:
     # Runs after the build job completes
     needs: "build"
     if: ${{ contains('playtechnique/websites', github.repository ) }}
-    defaults:
-      run:
-        working-directory: ansible
+    # defaults:
+    #   run:
+    #     working-directory: ansible
 
     steps:
     - name: "set up ansible"
