@@ -1,5 +1,5 @@
 ---
-name: Docker Image CI
+name: Deploy to Digital Ocean
 
 on:
   push:
