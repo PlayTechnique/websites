@@ -50,7 +50,7 @@ jobs:
         sudo apt-get install -y git-crypt
     - name: decrypt
       run: |
-         cd .. && git-crypt unlock -k <(echo ${{ secrets.GIT_CRYPT }} | base64 -ds) && cd -
+         cd .. && git-crypt unlock -k <(echo  | base64 -d) && cd -
     - name: "where am I"
       run: |
         pwd && ls -l && echo "---" && ls -l .. && cd .. && find .
