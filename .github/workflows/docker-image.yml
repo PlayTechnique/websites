@@ -44,11 +44,14 @@ jobs:
     - name: "set up ansible"
       run: |
         pip install ansible
-    - name: "add the ssh key to the ssh-agent"
+    -   name: Setup SSH Keys and known_hosts
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.DIGITAL_OCEAN_CI_SSH_KEY }}
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
-        eval "$(ssh-agent -s)" && echo $SSH_PRIVATE_KEY | ssh-add - > /dev/null
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.DIGITAL_OCEAN_CI_SSH_KEY }}"
     - name: "run ansible"
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
         ansible-playbook -i inventory.yaml -vv -l droplets playbook.yaml
