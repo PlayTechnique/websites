@@ -39,6 +39,9 @@ jobs:
         working-directory: "ansible"
     if: ${{ contains('playtechnique/websites', github.repository ) }}
     steps:
+    - name: Install git-crypt
+      run: |
+        apt-get install -y git-crypt
     - name: Checkout
       uses: actions/checkout@v3
     - name: "where am I"
