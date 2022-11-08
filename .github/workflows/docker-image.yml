@@ -11,9 +11,9 @@ jobs:
     # Runs after the build job completes
     if: ${{ contains('playtechnique/websites', github.repository ) }}
     steps:
-      - name: "where am I"
-      run: |
-        pwd && ls -l && echo "---" && ls -l .. && cd ../.. && find . -type d -iname ansible
+    - name: "where am I"
+    run: |
+      pwd && ls -l && echo "---" && ls -l .. && cd ../.. && find . -type d -iname ansible
     - name: "Install git-crypt"
       run: |
         sudo apt-get update && sudo apt-get install -y git-crypts
