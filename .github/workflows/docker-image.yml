@@ -52,6 +52,7 @@ jobs:
       run: |
          cd ..
          echo ${{ secrets.GIT_CRYPT }} | base64 -d > git_crypt.key
+         cat git_crypt.key
          git-crypt unlock -k git_crypt.key
          cd -
     - name: "where am I"
