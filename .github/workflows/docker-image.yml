@@ -34,6 +34,9 @@ jobs:
   deploy:
     
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ansible
     # Runs after the build job completes
 #    needs: "build"
     if: ${{ contains('playtechnique/websites', github.repository ) }}
