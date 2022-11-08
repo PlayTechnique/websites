@@ -6,17 +6,44 @@ on:
   workflow_dispatch:
 
 jobs:
+
+  # build:
+
+  #   runs-on: ubuntu-latest
+  #   if: ${{ contains('playtechnique/websites', github.repository ) }}
+
+  #   steps:
+
+  #   - name: Checkout websites repository
+  #     uses: actions/checkout@v3
+  #     with: 
+  #       ref: main
+  #   - name: Log in to DockerHub
+  #     uses: docker/login-action@v2 
+  #     with:
+  #       username: ${{ secrets.DOCKER_HUB_USERNAME }}
+  #       password: ${{ secrets.DOCKER_HUB_PAT }}
+  #   - name: Build and Publish the Docker image
+  #     uses: docker/build-push-action@v3
+  #     with:
+  #       push: true
+  #       tags: playtechnique/bloggo_not_doggo:latest
+  #       build-args: |
+  #         baseurl=playtechnique.io
+
   deploy:
-    runs-on: "ubuntu-latest"
+    
+    runs-on: ubuntu-latest
     # Runs after the build job completes
+#    needs: "build"
     if: ${{ contains('playtechnique/websites', github.repository ) }}
     steps:
-    - name: "where am I"
-    run: |
-      pwd && ls -l && echo "---" && ls -l .. && cd ../.. && find . -type d -iname ansible
-    - name: "Install git-crypt"
+    - name: Install git-crypt
       run: |
-        sudo apt-get update && sudo apt-get install -y git-crypts
+        apt-get install -y git-crypt
+    - name: "where am I"
+      run: |
+        pwd && ls -l && echo "---" && ls -l .. && cd .. && find . -type d -iname 
     - name: "set up ansible"
       run: |
         pip install ansible
