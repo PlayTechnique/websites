@@ -17,8 +17,8 @@ jobs:
 
     steps:
     - name: "set up ansible"
-      pip:
-        name=ansible
+      run: |
+        pip install ansible
     - name: "add the ssh key to the ssh-agent"
       env:
         SSH_PRIVATE_KEY: ${{ secrets.DIGITAL_OCEAN_CI_SSH_KEY }}
