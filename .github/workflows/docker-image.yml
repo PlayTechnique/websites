@@ -7,16 +7,16 @@ on:
 
 jobs:
   deploy:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     # Runs after the build job completes
-    if: ${{ contains('playtechnique/websites', github.repository ) }}
-    steps:
-    - name: "Install git-crypt"
-      run: |
-        apt-get install -y git-crypt
     - name: "where am I"
       run: |
         pwd && ls -l && echo "---" && ls -l .. && cd ../.. && find . -type d -iname ansible
+    if: ${{ contains('playtechnique/websites', github.repository ) }}
+    steps:
+    - name: Install git-crypt
+      run: |
+        sudo apt-get update && sudo apt-get install -y git-crypts
     - name: "set up ansible"
       run: |
         pip install ansible
