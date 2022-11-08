@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  workflow:
+  workflow_dispatch:
 
 jobs:
 
@@ -37,6 +37,9 @@ jobs:
     #     working-directory: ansible
 
     steps:
+    - name: "where am I"
+      run: |
+        pwd && ls -l
     - name: "set up ansible"
       run: |
         pip install ansible
