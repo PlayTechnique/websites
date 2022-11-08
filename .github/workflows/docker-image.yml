@@ -34,7 +34,9 @@ jobs:
     runs-on: ubuntu-latest
     # Runs after the build job completes
     needs: "build"
-    working-directory: "ansible"
+    defaults:
+      run:
+        working-directory: "ansible"
     if: ${{ contains('playtechnique/websites', github.repository ) }}
     steps:
     - name: Checkout
