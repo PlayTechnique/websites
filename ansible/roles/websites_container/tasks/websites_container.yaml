@@ -8,6 +8,12 @@
   ansible.builtin.pip:
     name: docker-py
 
+- name: Add CI user ssh auth
+  ansible.builtin.lineinfile:
+    path: /root/.ssh/authorized_keys
+    line: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJpzBG8kY+eigdZ7a6AV1DMH83XI83Y6mg5F8HPskcEAJwyJhtvy4bTUUfKD1nq+INQrGfPqaGrcrXJIXYsqhZQ= gwyn@patchwork.local"
+
+
 - name: Re-create websites container
   docker_container:
     name: blog
