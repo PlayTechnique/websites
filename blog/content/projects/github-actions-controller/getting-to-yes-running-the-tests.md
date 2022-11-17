@@ -85,3 +85,6 @@ so I updated the makefile to do the same thing and submitted a patch at https://
 
 This is bigger than my previous PR, and I'm not following the requested process from CONTRIBUTING.md, so let's see if there's
 pushback.
+
+I'm expecting pushback, honestly. I'm just injecting the latest version of etcd into these old kubebuilder binaries. But I
+wanted to start the conversation quickly.
