@@ -79,8 +79,7 @@ That'll do it!
 
 So to run these tests I need a version of etcd that works on macOS.
 
-The modern day kubebuilder project is confusingly laid out to my brain, but I figured out that [they are downloading etcd from coreos]
-(https://github.com/kubernetes-sigs/kubebuilder/blob/d63a7cd30ae3e36b01e6264b63ff19083add8961/build/thirdparty/darwin/Dockerfile#L52),
+The modern day kubebuilder project is confusingly laid out to my brain, but I figured out that [they are downloading etcd from coreos](https://github.com/kubernetes-sigs/kubebuilder/blob/d63a7cd30ae3e36b01e6264b63ff19083add8961/build/thirdparty/darwin/Dockerfile#L52),
 so I updated the makefile to do the same thing and submitted a patch at https://github.com/actions-runner-controller/actions-runner-controller/pull/2013/files
 
 This is bigger than my previous PR, and I'm not following the requested process from CONTRIBUTING.md, so let's see if there's
