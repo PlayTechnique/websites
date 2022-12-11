@@ -16,4 +16,4 @@ RUN setcap cap_net_bind_service+ip hugo
 
 USER nobody
 WORKDIR blog
-ENTRYPOINT ../hugo  --appendPort "false" --port "80" --bind "0.0.0.0" --baseURL "${BASEURL}" server
+ENTRYPOINT ../hugo  --appendPort "false" --port "80" --bind "0.0.0.0" --baseURL "${BASEURL}" --environment "production" server
