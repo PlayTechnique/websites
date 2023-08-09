@@ -58,7 +58,7 @@ jobs:
       env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+        ssh-agent -a "${SSH_AUTH_SOCK}" > /dev/null
           ssh-add - <<< "${{ secrets.DIGITAL_OCEAN_CI_SSH_KEY }}"
     - name: "run ansible"
       env:
